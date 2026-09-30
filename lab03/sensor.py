@@ -1,7 +1,7 @@
 threshold = float(input())
 n = int(input())
 
-sm, mx, excess, errs = 0, 0, 0, 0
+sm, mx, excess, errs = 0, float('-inf'), 0, 0
 
 for _ in range(n):
     tmpr = input()
