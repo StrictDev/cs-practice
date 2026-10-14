@@ -6,7 +6,7 @@ def read_rows(lines: list[str]) -> list[dict]:
     rows = []
 
     for line in lines[1:]:
-        row = [el for el in line.rstrip().split(',') if el]
+        row = [el.strip() for el in line.rstrip().split(',') if el.strip()]
 
         if len(row) == len(headers):
             rows += [{headers[i]: row[i] for i in range(len(row))}]
