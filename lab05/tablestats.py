@@ -17,9 +17,9 @@ def read_rows(lines: list[str]) -> list[dict]:
 
 def count_types(rows: list[dict]) -> dict:
     cnt = dict()
-    for el in rows:
-        key = list(el.keys())[0]
-        cnt[key] = cnt.get(key, 0) + 1
+    for i in range(0, len(rows), 3):
+        data, event_type, time = rows[i]['дата'], rows[i + 1]['тип'], rows[i + 2]['минуты']
+        cnt[event_type] = cnt.get(event_type, 0) + 1
 
     return cnt
         
@@ -36,4 +36,15 @@ def total_minutes(rows: list[dict], kind: str) -> float:
                 continue
 
     return round(minutes, 1)
+
+
+def to_csv(counts: dict) -> str:
+    ss = 'тип,количество\n'
+
+    for key, value in sorted(counts.items()):
+        ss += f'{key},{value}\n'
+
+    return ss
+        
+    
     
