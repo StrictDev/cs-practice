@@ -1,6 +1,6 @@
 from tablestats import read_rows, count_types, total_minutes, to_csv
 
-filename = 'events.csv'
+filename = input()
 
 with open(filename, 'r', encoding='utf-8') as table:
     rows = read_rows(table)
