@@ -1,4 +1,7 @@
 def read_rows(lines: list[str]) -> list[dict]:
+    if len(lines) < 1:
+        return []
+    
     headers = [header for header in lines[0].rstrip().split(',') if header]
     rows = []
 
@@ -8,30 +11,25 @@ def read_rows(lines: list[str]) -> list[dict]:
         if len(row) != len(headers):
             continue
 
-        for i in range(len(row)):
-            if row[i]:
-                rows += [{headers[i]: row[i]}] 
+        rows += [{headers[i]: row[i] for i in range(len(row))}]
 
     return rows
 
 
 def count_types(rows: list[dict]) -> dict:
     cnt = dict()
-    for i in range(0, len(rows), 3):
-        data, event_type, time = rows[i]['дата'], rows[i + 1]['тип'], rows[i + 2]['минуты']
-        cnt[event_type] = cnt.get(event_type, 0) + 1
+    for el in rows:
+        cnt[el['тип']] = cnt.get(el['тип'], 0) + 1
 
     return cnt
         
 
 def total_minutes(rows: list[dict], kind: str) -> float:
     minutes = 0.0
-    for i in range(0, len(rows), 3):
-        data, event_type, time = rows[i]['дата'], rows[i + 1]['тип'], rows[i + 2]['минуты']
-        
-        if event_type == kind:
+    for el in rows:
+        if el['тип'] == kind:
             try:
-                minutes += float(time)
+                minutes += float(el['минуты'])
             except ValueError:
                 continue
 
