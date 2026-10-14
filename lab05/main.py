@@ -1,4 +1,4 @@
-from tablestats import read_rows
+from tablestats import read_rows, count_types
 
 filename = 'events.csv'
 
@@ -7,3 +7,4 @@ with open(filename, 'r', encoding='utf-8') as table:
 
 if __name__ == '__main__':
     print(rows)
+    print(count_types(rows))
