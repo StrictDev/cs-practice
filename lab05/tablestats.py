@@ -6,12 +6,10 @@ def read_rows(lines: list[str]) -> list[dict]:
     rows = []
 
     for line in lines[1:]:
-        row = line.rstrip().split(',')
+        row = [el for el in line.rstrip().split(',') if el]
 
-        if len(row) != len(headers):
-            continue
-
-        rows += [{headers[i]: row[i] for i in range(len(row))}]
+        if len(row) == len(headers):
+            rows += [{headers[i]: row[i] for i in range(len(row))}]
 
     return rows
 
@@ -29,7 +27,7 @@ def total_minutes(rows: list[dict], kind: str) -> float:
     for el in rows:
         if el['тип'] == kind:
             try:
-                minutes += float(el['минуты'])
+                minutes += float(el['минуты'].replace(',', '.'))
             except ValueError:
                 continue
 
