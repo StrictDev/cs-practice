@@ -3,7 +3,7 @@ from tablestats import read_rows, count_types, total_minutes, to_csv
 filename = input()
 
 with open(filename, 'r', encoding='utf-8') as table:
-    rows = read_rows(table)
+    rows = read_rows(table.readlines())
 
     print(len(rows) // 3)
     print(len(count_types(rows)))

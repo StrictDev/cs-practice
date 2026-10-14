@@ -1,8 +1,8 @@
 def read_rows(lines: list[str]) -> list[dict]:
-    headers = [header for header in lines.readline().rstrip().split(',') if header]
+    headers = [header for header in lines[0].rstrip().split(',') if header]
     rows = []
 
-    for line in lines:
+    for line in lines[1:]:
         row = line.rstrip().split(',')
 
         if len(row) != len(headers):
