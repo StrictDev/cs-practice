@@ -23,3 +23,17 @@ def count_types(rows: list[dict]) -> dict:
 
     return cnt
         
+
+def total_minutes(rows: list[dict], kind: str) -> float:
+    minutes = 0.0
+    for i in range(0, len(rows), 3):
+        data, event_type, time = rows[i]['дата'], rows[i + 1]['тип'], rows[i + 2]['минуты']
+        
+        if event_type == kind:
+            try:
+                minutes += float(time)
+            except ValueError:
+                continue
+
+    return round(minutes, 1)
+    
