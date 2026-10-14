@@ -14,8 +14,8 @@ with open('summary.csv', 'w', encoding='utf-8') as out:
     out.write(to_csv(counts))
     pass
 
-if __name__ == '__main__':
-    print(rows)
-    print(count_types(rows))
-    print(total_minutes(rows, 'ошибка'))
-    print(to_csv({'ошибка': 4, 'запуск': 4}))
+# if __name__ == '__main__':
+    # print(rows)
+    # print(count_types(rows))
+    # print(total_minutes(rows, 'ошибка'))
+    # print(to_csv({'ошибка': 4, 'запуск': 4}))
