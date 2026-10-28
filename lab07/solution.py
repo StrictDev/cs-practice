@@ -15,4 +15,10 @@ def column_means(matrix: list[list[float]]) -> list[float]:
     if not matrix:
         return []
     arr = np.asarray(matrix, dtype=float)
-    return np.mean(arr, axis=0).tolist()
+    return np.round(np.mean(arr, axis=0), decimals=6).tolist()
+
+def column_range(matrix: list[list[float]], column: int) -> float:
+    if not matrix:
+        return 0.0
+    col = np.asarray(matrix, dtype=float)[:, column]
+    return float(np.round(max(col) - min(col), decimals=6))
