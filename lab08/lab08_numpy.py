@@ -78,6 +78,20 @@ changed_matrix[1:4] = 100
 print(f'changed_matrix: {changed_matrix}')
 print(f'matrix: {matrix}')
 
+# - 6
+numbers = np.arange(0, 12)
+
+# Произведение количества строк и столбцов должно равняться количеству элементов
+# 3x4 = 12 - верно
+# 5x3 != 12 (15) - неверно
+table = numbers.reshape(3, 4)
+transposed = table.T
+
+print(f'numbers: {numbers}')
+print(f'table: {table}')
+print(f'transposed: {transposed}')
+
+
 
 
 
